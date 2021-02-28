@@ -39,8 +39,13 @@
                         </li>
                         
                         <li class="">
+                            <a href="blood_bank.php">Blood Banks</a>
+                        </li>
+
+                        <li class="">
                             <a href="../index.php">User Login</a>
                         </li>
+                        
           </ul>
         </div><!--/.nav-collapse -->
       </div>
