@@ -44,8 +44,17 @@ class DBConnect {
         $stmt->execute();
         return $stmt->fetchAll();
     }
+    public function getBanks(){
+        $stmt = $this->db->prepare("SELECT * FROM blood_bank");
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
     
-    
+    public function getFilteredBanks($search){
+        $stmt = $this->db->prepare("SELECT * FROM blood_bank where bcity LIKE '%$search%'");
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
     
     
     
