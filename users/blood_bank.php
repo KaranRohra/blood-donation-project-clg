@@ -27,10 +27,7 @@ if(isset($_GET['search'])){
                         <div class="col-sm-4">
                             <input id="hidden" type="text" name="city" value="" required="true" class="form-control" onkeyup="filterBanks(this.value)"/>
                         </div>
-                        <div class="col-sm-2">
-                     
-                            <button class="btn btn-info btn-sm" name="searchByCityBtn" >Search</button>
-                        </div>
+                        
                     </div>
                 </form>
             </div>
@@ -38,28 +35,7 @@ if(isset($_GET['search'])){
     </div>
     <div class="row">
         <div class="col-md-12" id="filter">
-            <?php //var_dump($banks) ?>
-            <?php if(isset($banks[0])): ?>
-                <label>Total number of banks: <span class="emphasize"><?= count($banks); ?> Banks</span> </label>
-                <table class="table table-condensed">
-                    <thead>
-                    <th>Name</th>
-                    <th>Address</th>
-                    <th>Phone no</th>
-                    </thead>
-                    
-                    <?php 
-                    $i=0;
-                    foreach($banks as $b): $i++;?>
-                    
-                    <tr class="<?php if($i%2==0){echo 'bg-danger';} else{echo 'bg-success';} ?>">
-                        <td><?= $b['bname'] ?></td>
-                        <td><?= $b['baddress']; ?></td>
-                        <td><?= $b['bphone']; ?></td>
-                    </tr>
-                    <?php endforeach;?>
-                </table>
-                <?php endif; ?>
+            
         </div>
     </div>
 </div>
@@ -67,10 +43,7 @@ if(isset($_GET['search'])){
 
 <script>
 function filterBanks(str) {
-    if (str.length == 0) {
-        //document.getElementById("filter").innerHTML = "";
-        return;
-    } else {
+    
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
@@ -79,8 +52,9 @@ function filterBanks(str) {
                 document.getElementById("filter").innerHTML = this.responseText;
             }
         };
-        xmlhttp.open("GET", "blood_bank.php?search=" + str, true);
+        xmlhttp.open("GET", "bloodbankdata/filter.php?search=" + str, true);
         xmlhttp.send();
-    }
+    
 }
+filterBanks("");
 </script>
